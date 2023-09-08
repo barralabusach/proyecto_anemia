@@ -2,7 +2,6 @@
 
 # Set env:
 rm(list=ls())
-setwd("C:/Users/cesar/OneDrive/Proyectos/Anemia")
 
 # Load packages:
 library(Biostrings)
