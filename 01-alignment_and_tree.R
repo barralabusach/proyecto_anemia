@@ -1,30 +1,34 @@
-## Script para realizar clasificación de las secuencias de hemoglobina ##
+## Script para realizar clasificación de las secuencias de hemoglobina de una muestra de población chilena ##
 
-# set env:
+# Clear memory space:
 rm(list = ls())
 
+### Install Bioconductor to install the needed packages:
+if (!require("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install(version = "3.18")
+
 # load packages:
-library(Biostrings)
-library(msa)
-library(EnvNJ)
-library(ggtree)
-library(ggplot2)
-library(adegenet)
-library(ape)
-library(stats)
-library(ips)
-library(bios2mds)
+if(!require("Biostrings")){BiocManager::install("Biostrings")}
+if(!require("msa")){BiocManager::install("msa")}
+if(!require("EnvNJ")){BiocManager::install("EnvNJ")}
+if(!require("ggtree")){BiocManager::install("ggtree", force = TRUE)}
+if(!require("ggplot2")){BiocManager::install("ggplot2")}
+if(!require("adegenet")){BiocManager::install("adegenet")}
+if(!require("ape")){BiocManager::install("ape")}
+if(!require("ips")){BiocManager::install("ips")}
+if(!require("bios2mds")){BiocManager::install("bios2mds")}
 
 # Entries:
 # Create one file with several sequences:
 sequences <- EnvNJ::fastaconc(
   otus = c(
-    "sample1", "sample2", "sample3", "sample4", "sample5",
-    "sample6", "sample7", "sample8", "sample9", "sample10",
-    "sample11"
+    "sample1-hbb", "sample2-hbb", "sample3-hbb", "sample4-hbb", "sample5-hbb",
+    "sample6-hbb", "sample7-hbb", "sample8-hbb", "sample9-hbb", "sample10-hbb",
+    "sample11-hbb"
   ),
-  inputdir = "data/raw/",
-  out.file  = "data/interm/concatenates_sequences.fasta"
+  inputdir = "data/",
+  out.file  = "data/concatenates_sequences.fasta"
 )
 
 # Read file:
